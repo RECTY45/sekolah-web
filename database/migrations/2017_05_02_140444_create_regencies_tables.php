@@ -7,9 +7,9 @@
  *
  */
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateRegenciesTables extends Migration
 {
@@ -22,12 +22,8 @@ class CreateRegenciesTables extends Migration
     {
         Schema::create('regencies', function (Blueprint $table) {
             $table->char('id', 4)->index();
-            $table->char('province_id', 2);
             $table->string('name', 50);
-            $table->foreign('province_id')
-                ->references('id')
-                ->on('provinces')
-                ->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('province_id');
         });
     }
 
